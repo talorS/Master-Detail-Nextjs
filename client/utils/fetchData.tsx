@@ -27,15 +27,24 @@ type Post = {
 
 export const getHpData = async (): Promise<HP_DATA_RESPONSE> => {
   const res = await fetch(`${API_URL}/get_hp_data`);
+  if (!res.ok) {
+    throw new Error('Failed to fetch data');
+  }
   return res.json();
 }
 
 export const getPostList = async (): Promise<POSTS_RESPONSE> => {
   let res = await fetch(`${API_URL}/get_posts`);
+  if (!res.ok) {
+    throw new Error('Failed to fetch data');
+  }
   return res.json();
 };
 
 export const getPost = async (id: number): Promise<POST_RESPONSE> => {
   let res = await fetch(`${API_URL}/get_post/${id}`);
+  if (!res.ok) {
+    throw new Error('Failed to fetch data');
+  }
   return res.json();
 };
